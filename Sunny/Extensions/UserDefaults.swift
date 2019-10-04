@@ -31,18 +31,18 @@ extension UserDefaults {
     
     //TODO: check if the set already contains the new location, and only try to add if it is not contian it
     static func addLocation(_ location: Location) {
-        if containsLocation(location) {
+        if !UserDefaults.containsLocation(location){
             var locations = loadLocations()
-        
+            print("addding")
             locations.insert(location)
-        
+            print(locations)
             saveLocations(locations)
         }
     }
     
     static func removeLocation(_ location: Location) {
         var locations = loadLocations()
-        
+        print("removing")
         locations.remove(location)
         
         saveLocations(locations)

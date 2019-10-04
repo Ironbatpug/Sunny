@@ -31,7 +31,7 @@
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="7hK-sd-DbP">
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="7hK-sd-DbP" id="Vy9-8A-hIl">
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="7hK-sd-DbP" id="Vy9-8A-hIl" customClass="CityViewCell" customModule="Sunny" customModuleProvider="target">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
@@ -79,6 +79,9 @@
                                         <state key="normal" title="★">
                                             <color key="titleColor" red="0.96470588239999999" green="0.65098039220000004" blue="0.13725490200000001" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
+                                        <connections>
+                                            <action selector="viewFavoriteCitesBtnWasPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="u0L-AQ-3im"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="0.53205265410000002" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -109,6 +112,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <connections>
+                        <outlet property="favoriteCitesButton" destination="lbh-if-RHi" id="eMq-et-5a8"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
@@ -324,7 +330,7 @@
                                 <rect key="frame" x="0.0" y="70" width="375" height="597"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="HRb-ak-fDq">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="FavoriteCityTableViewCell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="FavoriteCityTableViewCell" id="HRb-ak-fDq" customClass="FavoriteCityTableViewCell" customModule="Sunny" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="HRb-ak-fDq" id="TCx-1k-9Gr">
@@ -343,6 +349,9 @@
                                                 <constraint firstItem="bV1-cj-xL3" firstAttribute="centerY" secondItem="TCx-1k-9Gr" secondAttribute="centerY" id="aJP-eB-B6Z"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="cityName" destination="bV1-cj-xL3" id="aSB-VR-cI6"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -359,6 +368,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="ham-9X-tOG"/>
                     </view>
+                    <connections>
+                        <outlet property="favoriteTableView" destination="9xA-zJ-69s" id="Kk3-30-4H1"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pMt-gz-tSm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
