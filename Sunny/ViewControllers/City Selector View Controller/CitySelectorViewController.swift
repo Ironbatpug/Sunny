@@ -18,7 +18,7 @@ class CitySelectorViewController: UIViewController {
         super.viewDidLoad()
     }
     
-    func fetchWeather() {
+    private func fetchWeather() {
         dataService.weatherForLocation(latitude: 47.7979, longitude: 19.0209) { (location, weather, dataError) in
             if let dataError = dataError {
                 print(dataError)

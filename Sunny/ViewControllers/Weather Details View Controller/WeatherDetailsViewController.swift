@@ -12,6 +12,8 @@ class WeatherDetailsViewController: UIViewController {
     
     @IBOutlet weak var cityNameLabel: UILabel!
     @IBOutlet weak var weatherTableView: UITableView!
+    @IBOutlet weak var favoriteButton: UIButton!
+
     
     var weatherData : [WeatherData]?
     var location: Location?
@@ -20,7 +22,14 @@ class WeatherDetailsViewController: UIViewController {
         super.viewDidLoad()
         weatherTableView.delegate = self
         weatherTableView.dataSource = self
-        self.cityNameLabel.text = location?.city
+        
+        guard let location = self.location else {return}
+        self.cityNameLabel.text = location.city
+        if UserDefaults.containsLocation(location) {
+            favoriteButton.setTitle("★", for: .normal)
+        } else {
+            favoriteButton.setTitle("☆", for: .normal)
+        }
     }
     
     func initData(forWeatherData weatherData: [WeatherData], witLocation location: Location) {
@@ -28,7 +37,16 @@ class WeatherDetailsViewController: UIViewController {
         self.location = location
     }
     
-    @IBOutlet weak var setCityAsFavoriteButtonWasPressed: UIButton!
+    @IBAction func setFavoriteButtonWasPressed(_ sender: Any) {
+        guard let location = self.location else {return}
+        if UserDefaults.containsLocation(location) {
+            UserDefaults.removeLocation(location)
+            favoriteButton.setTitle("☆", for: .normal)
+        } else {
+            UserDefaults.addLocation(location)
+            favoriteButton.setTitle("★", for: .normal)
+        }
+    }
     
     @IBAction func backButtonWasPressed(_ sender: Any) {
         dismiss(animated: true, completion: nil)

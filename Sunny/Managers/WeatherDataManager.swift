@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import Alamofire
 import SwiftyJSON
 
 
@@ -60,7 +59,7 @@ final class WeatherDataManager : WeatherDataManagerProtocol {
                             let city = json["city_name"].stringValue
                             
                             
-                            let location = Location(city: city, lat: latitude, long: longitude)
+                            let location = Location(city: city, latitude: latitude, longitude: longitude)
                             completion(location, weatherData, nil)
                             
                         } catch {

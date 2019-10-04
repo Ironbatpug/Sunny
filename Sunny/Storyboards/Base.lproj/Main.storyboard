@@ -147,6 +147,9 @@
                                         <state key="normal" title="☆">
                                             <color key="titleColor" red="0.96470588239999999" green="0.65098039220000004" blue="0.13725490200000001" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
+                                        <connections>
+                                            <action selector="setFavoriteButtonWasPressed:" destination="vTA-pH-ZWc" eventType="touchUpInside" id="3Ih-vC-E0Q"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="0.53205265410000002" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -275,7 +278,7 @@
                     </view>
                     <connections>
                         <outlet property="cityNameLabel" destination="apG-r4-olS" id="DXi-fK-zKu"/>
-                        <outlet property="setCityAsFavoriteButtonWasPressed" destination="dtR-rb-1nW" id="G8G-Zw-1VS"/>
+                        <outlet property="favoriteButton" destination="dtR-rb-1nW" id="G8G-Zw-1VS"/>
                         <outlet property="weatherTableView" destination="Gin-OW-KzD" id="EJw-Gt-iDh"/>
                     </connections>
                 </viewController>
