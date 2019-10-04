@@ -24,6 +24,8 @@
 		759269E22347AFDB00D9FFE5 /* WeatherDataTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 759269E12347AFDB00D9FFE5 /* WeatherDataTableViewCell.swift */; };
 		759269E42347B03300D9FFE5 /* FavouriteLocationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 759269E32347B03300D9FFE5 /* FavouriteLocationsViewController.swift */; };
 		759269E62347D10C00D9FFE5 /* Geocoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 759269E52347D10C00D9FFE5 /* Geocoder.swift */; };
+		759269E82347DD8D00D9FFE5 /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 759269E72347DD8D00D9FFE5 /* UserDefaults.swift */; };
+		759269F22347FBC200D9FFE5 /* FavoriteCityTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 759269F12347FBC200D9FFE5 /* FavoriteCityTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +61,8 @@
 		759269E12347AFDB00D9FFE5 /* WeatherDataTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherDataTableViewCell.swift; sourceTree = "<group>"; };
 		759269E32347B03300D9FFE5 /* FavouriteLocationsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouriteLocationsViewController.swift; sourceTree = "<group>"; };
 		759269E52347D10C00D9FFE5 /* Geocoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Geocoder.swift; sourceTree = "<group>"; };
+		759269E72347DD8D00D9FFE5 /* UserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaults.swift; sourceTree = "<group>"; };
+		759269F12347FBC200D9FFE5 /* FavoriteCityTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteCityTableViewCell.swift; sourceTree = "<group>"; };
 		88254F6314832D9675E4AA5E /* Pods-SunnyTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SunnyTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-SunnyTests/Pods-SunnyTests.release.xcconfig"; sourceTree = "<group>"; };
 		89B6A0F4AFBC653192A3E192 /* Pods_Sunny.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Sunny.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		930CB18941753307350E9CA0 /* Pods-Sunny.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sunny.release.xcconfig"; path = "Pods/Target Support Files/Pods-Sunny/Pods-Sunny.release.xcconfig"; sourceTree = "<group>"; };
@@ -152,7 +156,7 @@
 			isa = PBXGroup;
 			children = (
 				759269CE2345325900D9FFE5 /* City Selector View Controller */,
-				759269DE2347AF5800D9FFE5 /* Favorite ViewContoller */,
+				759269DE2347AF5800D9FFE5 /* FavoritCity View Contoller */,
 				759269CA2345258E00D9FFE5 /* Weather Details View Controller */,
 			);
 			path = ViewControllers;
@@ -178,6 +182,7 @@
 		759269C023451D8400D9FFE5 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				759269E72347DD8D00D9FFE5 /* UserDefaults.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -256,12 +261,21 @@
 			path = Managers;
 			sourceTree = "<group>";
 		};
-		759269DE2347AF5800D9FFE5 /* Favorite ViewContoller */ = {
+		759269DE2347AF5800D9FFE5 /* FavoritCity View Contoller */ = {
 			isa = PBXGroup;
 			children = (
+				759269F02347FBA300D9FFE5 /* FavoriteCity TableCell */,
 				759269E32347B03300D9FFE5 /* FavouriteLocationsViewController.swift */,
 			);
-			path = "Favorite ViewContoller";
+			path = "FavoritCity View Contoller";
+			sourceTree = "<group>";
+		};
+		759269F02347FBA300D9FFE5 /* FavoriteCity TableCell */ = {
+			isa = PBXGroup;
+			children = (
+				759269F12347FBC200D9FFE5 /* FavoriteCityTableViewCell.swift */,
+			);
+			path = "FavoriteCity TableCell";
 			sourceTree = "<group>";
 		};
 		CEE3B6CF5CBA2223E3A3C4E8 /* Pods */ = {
@@ -442,8 +456,10 @@
 				7592698E23451D0800D9FFE5 /* CitySelectorViewController.swift in Sources */,
 				759269C7234522B200D9FFE5 /* Location.swift in Sources */,
 				759269E62347D10C00D9FFE5 /* Geocoder.swift in Sources */,
+				759269F22347FBC200D9FFE5 /* FavoriteCityTableViewCell.swift in Sources */,
 				759269D82346703400D9FFE5 /* WeatherDataManager.swift in Sources */,
 				759269E22347AFDB00D9FFE5 /* WeatherDataTableViewCell.swift in Sources */,
+				759269E82347DD8D00D9FFE5 /* UserDefaults.swift in Sources */,
 				759269E42347B03300D9FFE5 /* FavouriteLocationsViewController.swift in Sources */,
 				7592698C23451D0800D9FFE5 /* AppDelegate.swift in Sources */,
 				759269DD2347A5F200D9FFE5 /* WeatherDataManagerProtocol.swift in Sources */,

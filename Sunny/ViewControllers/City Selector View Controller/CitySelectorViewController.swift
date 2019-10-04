@@ -9,16 +9,23 @@
 import UIKit
 
 class CitySelectorViewController: UIViewController {
-    
+    @IBOutlet weak var favoriteCitesButton: UIButton!
+
     private lazy var dataService: WeatherDataManagerProtocol = {
         return WeatherDataManager(baseURL: API.urlForSixteenDayForecast, header: API.APIHeader)
     }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if UserDefaults.loadLocations().isEmpty{
+            favoriteCitesButton.isHidden = true
+        } else {
+            favoriteCitesButton.isHidden = false
+        }
     }
     
-    func fetchWeather() {
+    private func fetchWeather() {
         dataService.weatherForLocation(latitude: 47.7979, longitude: 19.0209) { (location, weather, dataError) in
             if let dataError = dataError {
                 print(dataError)
@@ -35,6 +42,17 @@ class CitySelectorViewController: UIViewController {
 
     @IBAction func searchForCurrentPositionWasPressed(_ sender: Any) {
         fetchWeather()
+    }
+    
+    
+    @IBAction func viewFavoriteCitesBtnWasPressed(_ sender: Any) {
+        let locations = Array(UserDefaults.loadLocations())
+        print(locations)
+        if !locations.isEmpty {
+            guard let favouriteLocationsViewController = self.storyboard?.instantiateViewController(withIdentifier: "FavouriteLocationsViewController") as? FavouriteLocationsViewController else { return }
+            favouriteLocationsViewController.initData(forLocations: locations)
+            self.present(favouriteLocationsViewController, animated: true, completion: nil)
+        }
     }
     
 }
