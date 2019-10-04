@@ -315,6 +315,9 @@
                                         <state key="normal" title="&lt;">
                                             <color key="titleColor" red="0.96470588239999999" green="0.65098039220000004" blue="0.13725490200000001" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
+                                        <connections>
+                                            <action selector="backButtonWasPressed:" destination="kCF-EA-KwO" eventType="touchUpInside" id="xPy-H2-ruF"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="0.53205265410000002" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

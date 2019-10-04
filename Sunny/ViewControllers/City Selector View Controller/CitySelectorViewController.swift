@@ -11,13 +11,16 @@ import UIKit
 class CitySelectorViewController: UIViewController {
     @IBOutlet weak var favoriteCitesButton: UIButton!
 
-    private lazy var dataService: WeatherDataManagerProtocol = {
+    private lazy var dataService: WeatherDataManagering = {
         return WeatherDataManager(baseURL: API.urlForSixteenDayForecast, header: API.APIHeader)
     }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         if UserDefaults.loadLocations().isEmpty{
             favoriteCitesButton.isHidden = true
         } else {
