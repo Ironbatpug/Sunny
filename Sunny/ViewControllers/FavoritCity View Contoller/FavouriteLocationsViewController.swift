@@ -12,7 +12,7 @@ class FavouriteLocationsViewController: UIViewController {
     @IBOutlet weak var favoriteTableView: UITableView!
     var cities = [Location]()
 
-    private lazy var dataService: WeatherDataManagering = {
+    private lazy var dataService: WeatherDataManager = {
         return WeatherDataManager(baseURL: API.urlForSixteenDayForecast, header: API.APIHeader)
     }()
 
@@ -26,8 +26,8 @@ class FavouriteLocationsViewController: UIViewController {
         cities = locations
     }
     
-    private func fetchWeather() {
-        dataService.weatherForLocation(latitude: 47.7979, longitude: 19.0209) { (location, weather, dataError) in
+    private func fetchWeather(forLatitude latitude: Double, withLogitude longitude: Double) {
+        dataService.weatherForLocation(latitude: latitude, longitude: longitude) { (location, weather, dataError) in
             if let dataError = dataError {
                 print(dataError)
             } else if let weather = weather, let location = location {
@@ -67,7 +67,9 @@ extension FavouriteLocationsViewController: UITableViewDelegate, UITableViewData
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        fetchWeather()
+        let location = cities[indexPath.row]
+        
+        fetchWeather(forLatitude: location.latitude, withLogitude: location.longitude)
     }
     
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
@@ -84,7 +86,7 @@ extension FavouriteLocationsViewController: UITableViewDelegate, UITableViewData
             self.cities.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .automatic)
         }
-        deleteAction.backgroundColor = #colorLiteral(red: 0.9254902005, green: 0.2352941185, blue: 0.1019607857, alpha: 1)
+        deleteAction.backgroundColor = #colorLiteral(red: 0.8786954659, green: 0.2403508394, blue: 0.2190680203, alpha: 1)
         
         return [deleteAction]
     }

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Txf-zK-4Gb">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -11,6 +11,60 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--Root View Controller-->
+        <scene sceneID="99E-Dv-zf2">
+            <objects>
+                <viewController storyboardIdentifier="RootViewController" id="Txf-zK-4Gb" customClass="RootViewController" customModule="Sunny" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="vol-La-iN2">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="p9x-Ji-kBU">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Sunny" translatesAutoresizingMaskIntoConstraints="NO" id="MkK-19-BM8">
+                                        <rect key="frame" x="112" y="170" width="150" height="150"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="150" id="TeB-g0-UiV"/>
+                                            <constraint firstAttribute="width" constant="150" id="x1Y-OU-BY2"/>
+                                        </constraints>
+                                    </imageView>
+                                    <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="ScY-Xl-Z6h">
+                                        <rect key="frame" x="112" y="420" width="150" height="2"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="150" id="1mH-vS-v34"/>
+                                        </constraints>
+                                        <color key="progressTintColor" red="0.96470588239999999" green="0.65098039220000004" blue="0.13725490200000001" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="trackTintColor" red="0.96470588239999999" green="0.65098039220000004" blue="0.13725490200000001" alpha="1" colorSpace="calibratedRGB"/>
+                                    </progressView>
+                                </subviews>
+                                <color key="backgroundColor" white="0.53205265410000002" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="ScY-Xl-Z6h" firstAttribute="top" secondItem="MkK-19-BM8" secondAttribute="bottom" constant="100" id="9Ac-Q4-xsT"/>
+                                    <constraint firstItem="ScY-Xl-Z6h" firstAttribute="centerX" secondItem="p9x-Ji-kBU" secondAttribute="centerX" id="YnJ-Af-HsJ"/>
+                                    <constraint firstItem="MkK-19-BM8" firstAttribute="centerX" secondItem="p9x-Ji-kBU" secondAttribute="centerX" id="nvH-ZZ-DlU"/>
+                                    <constraint firstItem="MkK-19-BM8" firstAttribute="top" secondItem="YjH-ux-E3c" secondAttribute="top" constant="150" id="ob5-SZ-Wzm"/>
+                                </constraints>
+                                <viewLayoutGuide key="safeArea" id="YjH-ux-E3c"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="p9x-Ji-kBU" firstAttribute="leading" secondItem="gCl-7V-gto" secondAttribute="leading" id="1bn-Fy-xhl"/>
+                            <constraint firstItem="p9x-Ji-kBU" firstAttribute="trailing" secondItem="gCl-7V-gto" secondAttribute="trailing" id="KUz-WB-T6a"/>
+                            <constraint firstItem="p9x-Ji-kBU" firstAttribute="bottom" secondItem="gCl-7V-gto" secondAttribute="bottom" id="h82-5h-MXu"/>
+                            <constraint firstItem="p9x-Ji-kBU" firstAttribute="top" secondItem="vol-La-iN2" secondAttribute="top" id="jcW-Wd-tP6"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="gCl-7V-gto"/>
+                    </view>
+                    <connections>
+                        <outlet property="progressBar" destination="ScY-Xl-Z6h" id="eaO-Pm-g9I"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="aNF-JN-wxv" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-714" y="110"/>
+        </scene>
         <!--City Selector View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
@@ -113,6 +167,7 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+                        <outlet property="citySearchBar" destination="LmP-b6-55O" id="0UD-gf-eE2"/>
                         <outlet property="favoriteCitesButton" destination="lbh-if-RHi" id="eMq-et-5a8"/>
                     </connections>
                 </viewController>
@@ -381,6 +436,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Sunny" width="512" height="512"/>
         <image name="d01d" width="120" height="120"/>
     </resources>
 </document>

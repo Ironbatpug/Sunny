@@ -18,7 +18,7 @@ enum DataManagerError: Error {
     
 }
 
-final class WeatherDataManager : WeatherDataManagering {
+final class WeatherDataManager : WeatherDataManagerProtocol {
     
     
     private let baseURL: String
