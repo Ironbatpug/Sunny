@@ -1,5 +1,5 @@
 //
-//  WeatherDataManagerProtocol.swift
+//  WeatherDataManager.swift
 //  Sunny
 //
 //  Created by Molnár Csaba on 2019. 10. 04..

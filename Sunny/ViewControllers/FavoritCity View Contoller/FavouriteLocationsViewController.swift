@@ -12,6 +12,9 @@ class FavouriteLocationsViewController: UIViewController {
     @IBOutlet weak var favoriteTableView: UITableView!
     var cities = [Location]()
 
+    private lazy var dataService: WeatherDataManager = {
+        return WeatherDataManager(baseURL: API.urlForSixteenDayForecast, header: API.APIHeader)
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,6 +25,26 @@ class FavouriteLocationsViewController: UIViewController {
     func initData(forLocations locations: [Location]) {
         cities = locations
     }
+    
+    private func fetchWeather(forLatitude latitude: Double, withLogitude longitude: Double) {
+        dataService.weatherForLocation(latitude: latitude, longitude: longitude) { (location, weather, dataError) in
+            if let dataError = dataError {
+                print(dataError)
+            } else if let weather = weather, let location = location {
+                
+                DispatchQueue.main.async {
+                    guard let weatherDetailsViewController = self.storyboard?.instantiateViewController(withIdentifier: "WeatherDetailsViewController") as? WeatherDetailsViewController else { return }
+                    weatherDetailsViewController.initData(forWeatherData: weather, witLocation: location)
+                    self.present(weatherDetailsViewController, animated: true, completion: nil)
+                }
+            }
+        }
+    }
+    
+    @IBAction func backButtonWasPressed(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
+    
     
 }
 
@@ -41,5 +64,30 @@ extension FavouriteLocationsViewController: UITableViewDelegate, UITableViewData
         let cityName = location.city
         cell.configureCell(cityName: cityName)
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let location = cities[indexPath.row]
+        
+        fetchWeather(forLatitude: location.latitude, withLogitude: location.longitude)
+    }
+    
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCellEditingStyle {
+        return UITableViewCellEditingStyle.none
+    }
+    
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        let deleteAction = UITableViewRowAction(style: .destructive, title: "DELETE") { (rowAction, indexPath) in
+            UserDefaults.removeLocation(self.cities[indexPath.row])
+            self.cities.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .automatic)
+        }
+        deleteAction.backgroundColor = #colorLiteral(red: 0.8786954659, green: 0.2403508394, blue: 0.2190680203, alpha: 1)
+        
+        return [deleteAction]
     }
 }
