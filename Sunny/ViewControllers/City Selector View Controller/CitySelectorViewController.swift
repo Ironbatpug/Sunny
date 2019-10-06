@@ -12,9 +12,28 @@ import CoreLocation
 class CitySelectorViewController: UIViewController {
     @IBOutlet weak var favoriteCitesButton: UIButton!
     @IBOutlet weak var citySearchBar: UISearchBar!
+    @IBOutlet weak var cityTableView: UITableView!
     
     private var currentLocation: CLLocation?
+    
 
+    var filteredLocation = [Location]()
+    
+    var cities = [
+    Location(city: "Budapest", latitude: 47.4979, longitude: 19.0402),
+        Location(city: "New York", latitude: 47.4979, longitude: 19.0402),
+        Location(city: "Miskolc", latitude: 47.4979, longitude: 19.0402),
+        Location(city: "Debrecen", latitude: 47.4979, longitude: 19.0402),
+        Location(city: "London", latitude: 47.4979, longitude: 19.0402),
+        Location(city: "Paris", latitude: 47.4979, longitude: 19.0402),
+        Location(city: "Milano", latitude: 47.4979, longitude: 19.0402),
+        Location(city: "Tiszalúc", latitude: 47.4979, longitude: 19.0402)
+    ]
+    
+    private lazy var geoService: GeocodeDecoder = {
+        return GeocodeLocationService()
+    }()
+    
     private lazy var dataService: WeatherDataManagerProtocol = {
         return WeatherDataManager(baseURL: API.urlForSixteenDayForecast, header: API.APIHeader)
     }()
@@ -31,6 +50,11 @@ class CitySelectorViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         requestLocation()
+        cityTableView.delegate = self
+        cityTableView.dataSource = self
+        
+        citySearchBar.delegate = self
+
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -66,6 +90,32 @@ class CitySelectorViewController: UIViewController {
                 }
             }
         }
+    }
+    
+    private func fetchWeather(forCityName city: String) {
+        geoService.geocode(addressString: city) { (location, error) in
+            if let error = error {
+                debugPrint("could not determine the address")
+            } else {
+                self.fetchWeather(forLatitude: (location?.latitude)!, withLogitude: (location?.longitude)!)
+            }
+        }
+    }
+    
+    func searchBarIsEmpty() -> Bool {
+        return citySearchBar.text?.isEmpty ?? true
+    }
+    
+    func filterContentForSearchText(_ searchText: String, scope: String = "All") {
+        filteredLocation = cities.filter({( location : Location) -> Bool in
+            return location.city.lowercased().contains(searchText.lowercased())
+        })
+        
+        cityTableView.reloadData()
+    }
+    
+    func isFiltering() -> Bool {
+        return !searchBarIsEmpty()
     }
 
     @IBAction func searchForCurrentPositionWasPressed(_ sender: Any) {
@@ -117,10 +167,55 @@ extension CitySelectorViewController: CLLocationManagerDelegate {
     }
 }
 
-extension UISearchDisplayDelegate {
+extension CitySelectorViewController: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if isFiltering() {
+            return filteredLocation.count
+        }
+        
+        return cities.count
+    }
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let location: Location
+        
+        print(isFiltering())
+        if isFiltering() {
+            print("true")
+            location = filteredLocation[indexPath.row]
+            fetchWeather(forCityName: location.city)
+        } else {
+            location = cities[indexPath.row]
+            fetchWeather(forCityName: location.city)
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "CityTableViewCell") as? CityTableViewCell else { return UITableViewCell()}
+        let location: Location
+        if isFiltering() {
+            location = filteredLocation[indexPath.row]
+        } else {
+            location = cities[indexPath.row]
+        }
+        let cityName = location.city
+        cell.configureCell(cityName: cityName)
+        return cell
+    }
+    
     
 }
 
+extension CitySelectorViewController: UISearchBarDelegate {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        filterContentForSearchText(citySearchBar.text!)
+
+    }
+}
 
 
 

@@ -33,7 +33,6 @@ extension UserDefaults {
     static func addLocation(_ location: Location) {
         if !UserDefaults.containsLocation(location){
             var locations = loadLocations()
-            print("addding")
             locations.insert(location)
             print(locations)
             saveLocations(locations)
@@ -42,17 +41,14 @@ extension UserDefaults {
     
     static func removeLocation(_ location: Location) {
         var locations = loadLocations()
-        print("removing")
         locations.remove(location)
         
         saveLocations(locations)
     }
     
     static func containsLocation(_ location: Location) -> Bool {
-        debugPrint("contains")
 
         let locations = loadLocations()
-        debugPrint(locations)
 
         return locations.contains(location)
     }
