@@ -209,30 +209,6 @@
       "idiom" : "watch-marketing",
       "filename" : "1024.png",
       "scale" : "1x"
-    },
-    {
-      "size" : "108x108",
-      "idiom" : "watch",
-      "filename" : "216.png",
-      "scale" : "2x",
-      "role" : "quickLook",
-      "subtype" : "44mm"
-    },
-    {
-      "size" : "44x44",
-      "idiom" : "watch",
-      "filename" : "88.png",
-      "scale" : "2x",
-      "role" : "appLauncher",
-      "subtype" : "40mm"
-    },
-    {
-      "size" : "50x50",
-      "idiom" : "watch",
-      "filename" : "100.png",
-      "scale" : "2x",
-      "role" : "appLauncher",
-      "subtype" : "44mm"
     }
   ],
   "info" : {
