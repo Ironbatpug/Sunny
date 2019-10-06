@@ -30,6 +30,7 @@
 		75926A052348AED100D9FFE5 /* GeocodeLocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75926A042348AED100D9FFE5 /* GeocodeLocationService.swift */; };
 		75926A082349D4C600D9FFE5 /* CityTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75926A072349D4C600D9FFE5 /* CityTableViewCell.swift */; };
 		75926A0A234A17D000D9FFE5 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75926A09234A17D000D9FFE5 /* Date.swift */; };
+		75926A10234A2FB900D9FFE5 /* PredefinedCities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75926A0F234A2FB900D9FFE5 /* PredefinedCities.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,6 +72,7 @@
 		75926A042348AED100D9FFE5 /* GeocodeLocationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeocodeLocationService.swift; sourceTree = "<group>"; };
 		75926A072349D4C600D9FFE5 /* CityTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityTableViewCell.swift; sourceTree = "<group>"; };
 		75926A09234A17D000D9FFE5 /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
+		75926A0F234A2FB900D9FFE5 /* PredefinedCities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PredefinedCities.swift; sourceTree = "<group>"; };
 		88254F6314832D9675E4AA5E /* Pods-SunnyTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SunnyTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-SunnyTests/Pods-SunnyTests.release.xcconfig"; sourceTree = "<group>"; };
 		89B6A0F4AFBC653192A3E192 /* Pods_Sunny.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Sunny.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		930CB18941753307350E9CA0 /* Pods-Sunny.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sunny.release.xcconfig"; path = "Pods/Target Support Files/Pods-Sunny/Pods-Sunny.release.xcconfig"; sourceTree = "<group>"; };
@@ -218,6 +220,7 @@
 			isa = PBXGroup;
 			children = (
 				7592699A23451D0C00D9FFE5 /* Info.plist */,
+				75926A0F234A2FB900D9FFE5 /* PredefinedCities.swift */,
 			);
 			path = "Supporting Files";
 			sourceTree = "<group>";
@@ -478,6 +481,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				75926A10234A2FB900D9FFE5 /* PredefinedCities.swift in Sources */,
 				759269C9234522BF00D9FFE5 /* WeatherData.swift in Sources */,
 				759269CD23452CE400D9FFE5 /* Configuration.swift in Sources */,
 				759269E02347AF8C00D9FFE5 /* WeatherDetailsViewController.swift in Sources */,
