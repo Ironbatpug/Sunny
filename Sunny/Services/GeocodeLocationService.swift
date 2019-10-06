@@ -27,8 +27,5 @@ class GeocodeLocationService: GeocodeDecoder {
                 completionHandler(location, nil)
             }
         }
-        
     }
-    
-    
 }

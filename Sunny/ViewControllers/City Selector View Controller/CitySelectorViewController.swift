@@ -10,24 +10,26 @@ import UIKit
 import CoreLocation
 
 class CitySelectorViewController: UIViewController {
+    //MARK: connected ui elements
     @IBOutlet weak var favoriteCitesButton: UIButton!
     @IBOutlet weak var citySearchBar: UISearchBar!
     @IBOutlet weak var cityTableView: UITableView!
     
+    //MARK: Variables and constants
     private var currentLocation: CLLocation?
     
 
     var filteredLocation = [Location]()
     
     var cities = [
-    Location(city: "Budapest", latitude: 47.4979, longitude: 19.0402),
-        Location(city: "New York", latitude: 47.4979, longitude: 19.0402),
-        Location(city: "Miskolc", latitude: 47.4979, longitude: 19.0402),
-        Location(city: "Debrecen", latitude: 47.4979, longitude: 19.0402),
-        Location(city: "London", latitude: 47.4979, longitude: 19.0402),
-        Location(city: "Paris", latitude: 47.4979, longitude: 19.0402),
-        Location(city: "Milano", latitude: 47.4979, longitude: 19.0402),
-        Location(city: "Tiszalúc", latitude: 47.4979, longitude: 19.0402)
+        Location(city: "Budapest", latitude: 47.4979, longitude: 19.0402),
+        Location(city: "New York", latitude: 40.730610, longitude: -73.935242),
+        Location(city: "Miskolc", latitude: 48.0964, longitude: 20.7624),
+        Location(city: "Debrecen", latitude: 47.4925, longitude: 19.0513),
+        Location(city: "London", latitude: 51.509865, longitude: -0.118092),
+        Location(city: "Paris", latitude: 48.8566, longitude: 2.3522),
+        Location(city: "Milan", latitude: 45.4655, longitude: 9.1865),
+        Location(city: "Tiszalúc", latitude: 48.0400768, longitude: 21.1042205)
     ]
     
     private lazy var geoService: GeocodeDecoder = {
@@ -46,6 +48,8 @@ class CitySelectorViewController: UIViewController {
         
         return locationManager
     }()
+    
+    //MARK: Viewcontroller Functions
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -66,6 +70,7 @@ class CitySelectorViewController: UIViewController {
         }
     }
     
+    //MARK: permission ask
     private func requestLocation() {
         locationManager.delegate = self
         
@@ -76,6 +81,8 @@ class CitySelectorViewController: UIViewController {
             locationManager.requestWhenInUseAuthorization()
         }
     }
+    
+    //MARK: helpers for weather fetch
     
     private func fetchWeather(forLatitude latitude: Double, withLogitude longitude: Double) {
         dataService.weatherForLocation(latitude: latitude, longitude: longitude) { (location, weather, dataError) in
@@ -95,21 +102,29 @@ class CitySelectorViewController: UIViewController {
     private func fetchWeather(forCityName city: String) {
         geoService.geocode(addressString: city) { (location, error) in
             if let error = error {
-                debugPrint("could not determine the address")
+                debugPrint("could not determine the address: \(error)")
             } else {
                 self.fetchWeather(forLatitude: (location?.latitude)!, withLogitude: (location?.longitude)!)
             }
         }
     }
     
+    //Mark: serachbar
+    
     func searchBarIsEmpty() -> Bool {
         return citySearchBar.text?.isEmpty ?? true
     }
     
     func filterContentForSearchText(_ searchText: String, scope: String = "All") {
-        filteredLocation = cities.filter({( location : Location) -> Bool in
-            return location.city.lowercased().contains(searchText.lowercased())
-        })
+        geoService.geocode(addressString: searchText) { (location, error) in
+            if let error = error {
+                debugPrint("could not determine the address: \(error)")
+            } else {
+                guard let location = location else { return }
+                self.filteredLocation = [location]
+            }
+        }
+        
         
         cityTableView.reloadData()
     }
@@ -117,6 +132,8 @@ class CitySelectorViewController: UIViewController {
     func isFiltering() -> Bool {
         return !searchBarIsEmpty()
     }
+    
+    //MARK: Button actions
 
     @IBAction func searchForCurrentPositionWasPressed(_ sender: Any) {
             guard let location = currentLocation else { return }
@@ -138,6 +155,8 @@ class CitySelectorViewController: UIViewController {
         }
     }
 }
+
+//MARK: LocationManager
 
 extension CitySelectorViewController: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
@@ -166,6 +185,8 @@ extension CitySelectorViewController: CLLocationManagerDelegate {
         }
     }
 }
+
+//MARK: Tableview
 
 extension CitySelectorViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -213,7 +234,6 @@ extension CitySelectorViewController: UITableViewDelegate, UITableViewDataSource
 extension CitySelectorViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         filterContentForSearchText(citySearchBar.text!)
-
     }
 }
 
