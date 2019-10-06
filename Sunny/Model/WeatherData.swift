@@ -18,7 +18,6 @@ struct WeatherData {
     init(sunriseDate: Double, sunsetDate: Double, dayTemperature: Double, nightTemperature: Double, icon: String) {
         self.sunRiseDate = Date(timeIntervalSince1970: sunriseDate)
         self.sunsetDate = Date(timeIntervalSince1970: sunsetDate)
-
         self.dayTemperature = dayTemperature
         self.nightTemperature = nightTemperature
         self.icon = icon

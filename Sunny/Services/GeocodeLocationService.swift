@@ -12,8 +12,6 @@ import CoreLocation
 class GeocodeLocationService: GeocodeDecoder {    
     private lazy var geocoder = CLGeocoder()
 
-    
-    
     func geocode(addressString: String, completionHandler: @escaping GeocodeDecoder.LocationServiceCompletionHandler) {
         geocoder.geocodeAddressString(addressString) { (placemarks, error) in
             if let error = error {

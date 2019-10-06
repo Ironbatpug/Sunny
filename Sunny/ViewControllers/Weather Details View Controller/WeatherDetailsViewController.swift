@@ -9,15 +9,17 @@
 import UIKit
 
 class WeatherDetailsViewController: UIViewController {
-    
+    //MARK: connected ui elements
     @IBOutlet weak var cityNameLabel: UILabel!
     @IBOutlet weak var weatherTableView: UITableView!
     @IBOutlet weak var favoriteButton: UIButton!
 
-    
+    //MARK: Variables and constants
+
     var weatherData : [WeatherData]?
     var location: Location?
     
+    //MARK: Viewcontroller Functions
     override func viewDidLoad() {
         super.viewDidLoad()
         weatherTableView.delegate = self
@@ -37,6 +39,7 @@ class WeatherDetailsViewController: UIViewController {
         self.location = location
     }
     
+    //MARK: Button actions
     @IBAction func setFavoriteButtonWasPressed(_ sender: Any) {
         guard let location = self.location else {return}
         if UserDefaults.containsLocation(location) {
@@ -53,6 +56,7 @@ class WeatherDetailsViewController: UIViewController {
     }
 }
 
+//MARK: TableView delegation and datasource
 extension WeatherDetailsViewController: UITableViewDataSource, UITableViewDelegate {
     
     func numberOfSections(in tableView: UITableView) -> Int {

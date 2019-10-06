@@ -29,6 +29,7 @@
 		75926A0223489FE300D9FFE5 /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75926A0123489FE200D9FFE5 /* RootViewController.swift */; };
 		75926A052348AED100D9FFE5 /* GeocodeLocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75926A042348AED100D9FFE5 /* GeocodeLocationService.swift */; };
 		75926A082349D4C600D9FFE5 /* CityTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75926A072349D4C600D9FFE5 /* CityTableViewCell.swift */; };
+		75926A0A234A17D000D9FFE5 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75926A09234A17D000D9FFE5 /* Date.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,6 +70,7 @@
 		75926A0123489FE200D9FFE5 /* RootViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
 		75926A042348AED100D9FFE5 /* GeocodeLocationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeocodeLocationService.swift; sourceTree = "<group>"; };
 		75926A072349D4C600D9FFE5 /* CityTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityTableViewCell.swift; sourceTree = "<group>"; };
+		75926A09234A17D000D9FFE5 /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
 		88254F6314832D9675E4AA5E /* Pods-SunnyTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SunnyTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-SunnyTests/Pods-SunnyTests.release.xcconfig"; sourceTree = "<group>"; };
 		89B6A0F4AFBC653192A3E192 /* Pods_Sunny.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Sunny.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		930CB18941753307350E9CA0 /* Pods-Sunny.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sunny.release.xcconfig"; path = "Pods/Target Support Files/Pods-Sunny/Pods-Sunny.release.xcconfig"; sourceTree = "<group>"; };
@@ -162,7 +164,6 @@
 			isa = PBXGroup;
 			children = (
 				75926A032348A73500D9FFE5 /* Root View Controller */,
-				759269F7234890F500D9FFE5 /* Launch Screen View Controller */,
 				759269CE2345325900D9FFE5 /* City Selector View Controller */,
 				759269DE2347AF5800D9FFE5 /* FavoritCity View Contoller */,
 				759269CA2345258E00D9FFE5 /* Weather Details View Controller */,
@@ -191,6 +192,7 @@
 			isa = PBXGroup;
 			children = (
 				759269E72347DD8D00D9FFE5 /* UserDefaults.swift */,
+				75926A09234A17D000D9FFE5 /* Date.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -286,13 +288,6 @@
 				759269F12347FBC200D9FFE5 /* FavoriteCityTableViewCell.swift */,
 			);
 			path = "FavoriteCity TableCell";
-			sourceTree = "<group>";
-		};
-		759269F7234890F500D9FFE5 /* Launch Screen View Controller */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = "Launch Screen View Controller";
 			sourceTree = "<group>";
 		};
 		75926A032348A73500D9FFE5 /* Root View Controller */ = {
@@ -489,6 +484,7 @@
 				7592698E23451D0800D9FFE5 /* CitySelectorViewController.swift in Sources */,
 				759269C7234522B200D9FFE5 /* Location.swift in Sources */,
 				759269E62347D10C00D9FFE5 /* GeocodeDecoder.swift in Sources */,
+				75926A0A234A17D000D9FFE5 /* Date.swift in Sources */,
 				759269F22347FBC200D9FFE5 /* FavoriteCityTableViewCell.swift in Sources */,
 				759269D82346703400D9FFE5 /* WeatherDataManager.swift in Sources */,
 				759269E22347AFDB00D9FFE5 /* WeatherDataTableViewCell.swift in Sources */,
