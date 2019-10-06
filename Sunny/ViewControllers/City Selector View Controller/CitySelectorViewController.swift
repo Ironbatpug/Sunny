@@ -30,7 +30,9 @@ class CitySelectorViewController: UIViewController {
         Location(city: "Tiszalúc", latitude: 47.4979, longitude: 19.0402)
     ]
     
-
+    private lazy var geoService: GeocodeDecoder = {
+        return GeocodeLocationService()
+    }()
     
     private lazy var dataService: WeatherDataManagerProtocol = {
         return WeatherDataManager(baseURL: API.urlForSixteenDayForecast, header: API.APIHeader)
@@ -86,6 +88,16 @@ class CitySelectorViewController: UIViewController {
                     weatherDetailsViewController.initData(forWeatherData: weather, witLocation: location)
                     self.present(weatherDetailsViewController, animated: true, completion: nil)
                 }
+            }
+        }
+    }
+    
+    private func fetchWeather(forCityName city: String) {
+        geoService.geocode(addressString: city) { (location, error) in
+            if let error = error {
+                debugPrint("could not determine the address")
+            } else {
+                self.fetchWeather(forLatitude: (location?.latitude)!, withLogitude: (location?.longitude)!)
             }
         }
     }
@@ -166,6 +178,20 @@ extension CitySelectorViewController: UITableViewDelegate, UITableViewDataSource
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let location: Location
+        
+        print(isFiltering())
+        if isFiltering() {
+            print("true")
+            location = filteredLocation[indexPath.row]
+            fetchWeather(forCityName: location.city)
+        } else {
+            location = cities[indexPath.row]
+            fetchWeather(forCityName: location.city)
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

@@ -9,9 +9,7 @@
 import Foundation
 import CoreLocation
 
-class GeocodeLocationService: GeocodeDecoder {
-    static let instance = GeocodeLocationService()
-    
+class GeocodeLocationService: GeocodeDecoder {    
     private lazy var geocoder = CLGeocoder()
 
     
@@ -19,9 +17,14 @@ class GeocodeLocationService: GeocodeDecoder {
     func geocode(addressString: String, completionHandler: @escaping GeocodeDecoder.LocationServiceCompletionHandler) {
         geocoder.geocodeAddressString(addressString) { (placemarks, error) in
             if let error = error {
-                completionHandler([], error)
+                completionHandler(nil, error)
             } else if let placemarks = placemarks {
-                debugPrint(placemarks)
+                let placemark = placemarks.first
+                let city = placemark?.name
+                let latitude = placemark?.location?.coordinate.latitude
+                let longitude = placemark?.location?.coordinate.longitude
+                let location = Location(city: city!, latitude: latitude!, longitude: longitude!)
+                completionHandler(location, nil)
             }
         }
         
