@@ -9,12 +9,18 @@
 import UIKit
 
 class FavouriteLocationsViewController: UIViewController {
+    //MARK: connected ui elements
     @IBOutlet weak var favoriteTableView: UITableView!
+    
+    //MARK: Variables and constants
+    
     var cities = [Location]()
 
     private lazy var dataService: WeatherDataManager = {
         return WeatherDataManager(baseURL: API.urlForSixteenDayForecast, header: API.APIHeader)
     }()
+    
+    //MARK: Viewcontroller Functions
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,6 +31,8 @@ class FavouriteLocationsViewController: UIViewController {
     func initData(forLocations locations: [Location]) {
         cities = locations
     }
+    
+    //MARK: helpers for weather fetch
     
     private func fetchWeather(forLatitude latitude: Double, withLogitude longitude: Double) {
         dataService.weatherForLocation(latitude: latitude, longitude: longitude) { (location, weather, dataError) in
@@ -41,12 +49,14 @@ class FavouriteLocationsViewController: UIViewController {
         }
     }
     
+    //MARK: Button actions
+    
     @IBAction func backButtonWasPressed(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
-    
-    
 }
+
+//MARK: TableView delegation and datasource
 
 extension FavouriteLocationsViewController: UITableViewDelegate, UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {

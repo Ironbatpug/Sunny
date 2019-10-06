@@ -17,7 +17,6 @@ class CitySelectorViewController: UIViewController {
     
     //MARK: Variables and constants
     private var currentLocation: CLLocation?
-    
 
     var filteredLocation = [Location]()
     
@@ -42,10 +41,8 @@ class CitySelectorViewController: UIViewController {
     
     private lazy var locationManager: CLLocationManager = {
         let locationManager = CLLocationManager()
-        
         locationManager.distanceFilter = 1000.0
         locationManager.desiredAccuracy = 1000.0
-        
         return locationManager
     }()
     
@@ -56,9 +53,7 @@ class CitySelectorViewController: UIViewController {
         requestLocation()
         cityTableView.delegate = self
         cityTableView.dataSource = self
-        
         citySearchBar.delegate = self
-
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -83,7 +78,6 @@ class CitySelectorViewController: UIViewController {
     }
     
     //MARK: helpers for weather fetch
-    
     private func fetchWeather(forLatitude latitude: Double, withLogitude longitude: Double) {
         dataService.weatherForLocation(latitude: latitude, longitude: longitude) { (location, weather, dataError) in
             if let dataError = dataError {
@@ -110,7 +104,6 @@ class CitySelectorViewController: UIViewController {
     }
     
     //Mark: serachbar
-    
     func searchBarIsEmpty() -> Bool {
         return citySearchBar.text?.isEmpty ?? true
     }
@@ -124,8 +117,6 @@ class CitySelectorViewController: UIViewController {
                 self.filteredLocation = [location]
             }
         }
-        
-        
         cityTableView.reloadData()
     }
     
@@ -134,16 +125,12 @@ class CitySelectorViewController: UIViewController {
     }
     
     //MARK: Button actions
-
     @IBAction func searchForCurrentPositionWasPressed(_ sender: Any) {
-            guard let location = currentLocation else { return }
-            
-            let latitude = location.coordinate.latitude
-            let longitude = location.coordinate.longitude
-            
-            fetchWeather(forLatitude: latitude, withLogitude: longitude)
+        guard let location = currentLocation else { return }
+        let latitude = location.coordinate.latitude
+        let longitude = location.coordinate.longitude
+        fetchWeather(forLatitude: latitude, withLogitude: longitude)
     }
-    
     
     @IBAction func viewFavoriteCitesBtnWasPressed(_ sender: Any) {
         let locations = Array(UserDefaults.loadLocations())
@@ -168,11 +155,8 @@ extension CitySelectorViewController: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         if let location = locations.first {
             currentLocation = location
-            
             manager.delegate = nil
-            
             manager.stopUpdatingLocation()
-            
         }
     }
     
@@ -187,13 +171,11 @@ extension CitySelectorViewController: CLLocationManagerDelegate {
 }
 
 //MARK: Tableview
-
 extension CitySelectorViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if isFiltering() {
             return filteredLocation.count
         }
-        
         return cities.count
     }
     
@@ -203,10 +185,7 @@ extension CitySelectorViewController: UITableViewDelegate, UITableViewDataSource
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let location: Location
-        
-        print(isFiltering())
         if isFiltering() {
-            print("true")
             location = filteredLocation[indexPath.row]
             fetchWeather(forCityName: location.city)
         } else {
@@ -227,9 +206,9 @@ extension CitySelectorViewController: UITableViewDelegate, UITableViewDataSource
         cell.configureCell(cityName: cityName)
         return cell
     }
-    
-    
 }
+
+//MARK: serachbardelegate
 
 extension CitySelectorViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {

@@ -24,12 +24,8 @@ class WeatherDataTableViewCell: UITableViewCell {
     func configureCell(maxTempeture maxTemp: String, minTempeture minTemp: String, sunRise sunRiseDate: Date, sunSet sunSetDate: Date, weatherimageName: String) {
         self.maxTempValueLabel.text = maxTemp + " °C"
         self.minTempValueLabel.text = minTemp + " °C"
-        
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "MM-dd HH:mm:ss"
-        
-        self.sunRiseDate.text = dateFormatter.string(from: sunRiseDate)
-        self.sunSetDate.text = dateFormatter.string(from: sunSetDate)
+        self.sunRiseDate.text = sunRiseDate.dateAsStringFormatted(withDateFormat: "MM-dd HH:mm:ss")
+        self.sunSetDate.text = sunSetDate.dateAsStringFormatted(withDateFormat: "MM-dd HH:mm:ss")
         self.weatherImage.image = UIImage(named: weatherimageName)
     }
 

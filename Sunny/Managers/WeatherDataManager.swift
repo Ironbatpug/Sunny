@@ -19,10 +19,7 @@ enum DataManagerError: Error {
 }
 
 final class WeatherDataManager : WeatherDataManagerProtocol {
-    
-    
     private let baseURL: String
-    
     private let header: [String:String]
     
     init(baseURL: String, header: [String:String]) {
@@ -47,28 +44,19 @@ final class WeatherDataManager : WeatherDataManagerProtocol {
             
             let sessionTask = urlSession.dataTask(with: request) {
                 (data, response, error) in
-                if let _ = error {
+                if let error = error {
+                    debugPrint(error)
                     completion(nil, nil, .failedRequest)
-                    
                 } else if let data = data, let response = response as? HTTPURLResponse {
                     if response.statusCode == 200 {
-                        do {
-                            let json = JSON(data: data)
-                            
-                            let weatherData = self.getWeatherDataArrayFromJSON(json: json)
-                            let city = json["city_name"].stringValue
-                            
-                            
-                            let location = Location(city: city, latitude: latitude, longitude: longitude)
-                            completion(location, weatherData, nil)
-                            
-                        } catch {
-                            completion(nil, nil, .invalidResponse)
-                        }
+                        let json = JSON(data: data)
+                        let weatherData = self.getWeatherDataArrayFromJSON(json: json)
+                        let city = json["city_name"].stringValue
+                        let location = Location(city: city, latitude: latitude, longitude: longitude)
+                        completion(location, weatherData, nil)
                     } else {
                         completion(nil, nil, .failedRequest)
                     }
-                    
                 } else {
                     completion(nil, nil, .unknown)
                 }
@@ -88,7 +76,6 @@ final class WeatherDataManager : WeatherDataManagerProtocol {
             let sunrise = data["sunrise_ts"].doubleValue
             let weather = data["weather"]
             let icon = weather["icon"].stringValue
-            
             let weatherDaily = WeatherData(sunriseDate: sunrise, sunsetDate: sunset, dayTemperature: dayTemperature, nightTemperature: nightTemperature, icon: icon)
             
             weatherResult.append(weatherDaily)

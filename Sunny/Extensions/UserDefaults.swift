@@ -19,17 +19,12 @@ extension UserDefaults {
         guard let dictionaries = UserDefaults.standard.array(forKey: UserDefaultsKey.locations) as? [ [String: Any] ] else {
             return []
         }
-
         let locationArray = dictionaries.compactMap({ (dictionary) -> Location? in
             return Location(dictionary: dictionary)
         })
-        
-        let locationSet = Set(locationArray)
-        
-        return locationSet
+        return Set(locationArray)
     }
     
-    //TODO: check if the set already contains the new location, and only try to add if it is not contian it
     static func addLocation(_ location: Location) {
         if !UserDefaults.containsLocation(location){
             var locations = loadLocations()
@@ -47,14 +42,12 @@ extension UserDefaults {
     }
     
     static func containsLocation(_ location: Location) -> Bool {
-
         let locations = loadLocations()
 
         return locations.contains(location)
     }
     
     private static func saveLocations(_ locations: Set<Location>) {
-        
         let locations: [ [String: Any] ] = locations.map{ $0.asDictionary }
         UserDefaults.standard.set(locations, forKey: UserDefaultsKey.locations)
     }
