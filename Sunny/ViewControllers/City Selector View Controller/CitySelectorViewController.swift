@@ -20,9 +20,7 @@ class CitySelectorViewController: UIViewController {
     
 
     var filteredLocation = [Location]()
-    
 
-    
     private lazy var geoService: GeocodeDecoder = {
         return GeocodeLocationService()
     }()

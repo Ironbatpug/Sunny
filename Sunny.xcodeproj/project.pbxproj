@@ -14,7 +14,7 @@
 		7592699123451D0800D9FFE5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7592698F23451D0800D9FFE5 /* Main.storyboard */; };
 		7592699623451D0C00D9FFE5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7592699523451D0C00D9FFE5 /* Assets.xcassets */; };
 		7592699923451D0C00D9FFE5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7592699723451D0C00D9FFE5 /* LaunchScreen.storyboard */; };
-		759269A423451D0C00D9FFE5 /* SunnyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 759269A323451D0C00D9FFE5 /* SunnyTests.swift */; };
+		759269A423451D0C00D9FFE5 /* WeatherDetailsControllerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 759269A323451D0C00D9FFE5 /* WeatherDetailsControllerTest.swift */; };
 		759269C7234522B200D9FFE5 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 759269C6234522B200D9FFE5 /* Location.swift */; };
 		759269C9234522BF00D9FFE5 /* WeatherData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 759269C8234522BF00D9FFE5 /* WeatherData.swift */; };
 		759269CD23452CE400D9FFE5 /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 759269CC23452CE400D9FFE5 /* Configuration.swift */; };
@@ -30,6 +30,9 @@
 		75926A052348AED100D9FFE5 /* GeocodeLocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75926A042348AED100D9FFE5 /* GeocodeLocationService.swift */; };
 		75926A082349D4C600D9FFE5 /* CityTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75926A072349D4C600D9FFE5 /* CityTableViewCell.swift */; };
 		75926A0E234A2B6D00D9FFE5 /* PredefinedCities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75926A0D234A2B6D00D9FFE5 /* PredefinedCities.swift */; };
+		75926A13234A36EF00D9FFE5 /* testData.json in Resources */ = {isa = PBXBuildFile; fileRef = 75926A12234A36EF00D9FFE5 /* testData.json */; };
+		75926A17234A375700D9FFE5 /* XCTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75926A16234A375700D9FFE5 /* XCTestCase.swift */; };
+		75926A1B234A483E00D9FFE5 /* CitySelectorViewControllerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75926A1A234A483E00D9FFE5 /* CitySelectorViewControllerTest.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,7 +57,7 @@
 		7592699823451D0C00D9FFE5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7592699A23451D0C00D9FFE5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7592699F23451D0C00D9FFE5 /* SunnyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SunnyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		759269A323451D0C00D9FFE5 /* SunnyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SunnyTests.swift; sourceTree = "<group>"; };
+		759269A323451D0C00D9FFE5 /* WeatherDetailsControllerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherDetailsControllerTest.swift; sourceTree = "<group>"; };
 		759269A523451D0C00D9FFE5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		759269C6234522B200D9FFE5 /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		759269C8234522BF00D9FFE5 /* WeatherData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherData.swift; sourceTree = "<group>"; };
@@ -71,6 +74,9 @@
 		75926A042348AED100D9FFE5 /* GeocodeLocationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeocodeLocationService.swift; sourceTree = "<group>"; };
 		75926A072349D4C600D9FFE5 /* CityTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityTableViewCell.swift; sourceTree = "<group>"; };
 		75926A0D234A2B6D00D9FFE5 /* PredefinedCities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PredefinedCities.swift; sourceTree = "<group>"; };
+		75926A12234A36EF00D9FFE5 /* testData.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = testData.json; sourceTree = "<group>"; };
+		75926A16234A375700D9FFE5 /* XCTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XCTestCase.swift; sourceTree = "<group>"; };
+		75926A1A234A483E00D9FFE5 /* CitySelectorViewControllerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CitySelectorViewControllerTest.swift; sourceTree = "<group>"; };
 		88254F6314832D9675E4AA5E /* Pods-SunnyTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SunnyTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-SunnyTests/Pods-SunnyTests.release.xcconfig"; sourceTree = "<group>"; };
 		89B6A0F4AFBC653192A3E192 /* Pods_Sunny.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Sunny.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		930CB18941753307350E9CA0 /* Pods-Sunny.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sunny.release.xcconfig"; path = "Pods/Target Support Files/Pods-Sunny/Pods-Sunny.release.xcconfig"; sourceTree = "<group>"; };
@@ -146,8 +152,10 @@
 		759269A223451D0C00D9FFE5 /* SunnyTests */ = {
 			isa = PBXGroup;
 			children = (
-				759269A323451D0C00D9FFE5 /* SunnyTests.swift */,
 				759269A523451D0C00D9FFE5 /* Info.plist */,
+				75926A15234A374400D9FFE5 /* Extensions */,
+				75926A14234A372900D9FFE5 /* Test Cases */,
+				75926A11234A36A800D9FFE5 /* SupportingFile */,
 			);
 			path = SunnyTests;
 			sourceTree = "<group>";
@@ -314,6 +322,31 @@
 			path = "City Table View Cell";
 			sourceTree = "<group>";
 		};
+		75926A11234A36A800D9FFE5 /* SupportingFile */ = {
+			isa = PBXGroup;
+			children = (
+				75926A12234A36EF00D9FFE5 /* testData.json */,
+			);
+			path = SupportingFile;
+			sourceTree = "<group>";
+		};
+		75926A14234A372900D9FFE5 /* Test Cases */ = {
+			isa = PBXGroup;
+			children = (
+				759269A323451D0C00D9FFE5 /* WeatherDetailsControllerTest.swift */,
+				75926A1A234A483E00D9FFE5 /* CitySelectorViewControllerTest.swift */,
+			);
+			path = "Test Cases";
+			sourceTree = "<group>";
+		};
+		75926A15234A374400D9FFE5 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				75926A16234A375700D9FFE5 /* XCTestCase.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		CEE3B6CF5CBA2223E3A3C4E8 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -419,6 +452,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				75926A13234A36EF00D9FFE5 /* testData.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -510,7 +544,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				759269A423451D0C00D9FFE5 /* SunnyTests.swift in Sources */,
+				75926A1B234A483E00D9FFE5 /* CitySelectorViewControllerTest.swift in Sources */,
+				75926A17234A375700D9FFE5 /* XCTestCase.swift in Sources */,
+				759269A423451D0C00D9FFE5 /* WeatherDetailsControllerTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
