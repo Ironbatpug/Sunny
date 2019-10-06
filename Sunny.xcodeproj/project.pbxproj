@@ -33,6 +33,8 @@
 		75926A13234A36EF00D9FFE5 /* testData.json in Resources */ = {isa = PBXBuildFile; fileRef = 75926A12234A36EF00D9FFE5 /* testData.json */; };
 		75926A17234A375700D9FFE5 /* XCTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75926A16234A375700D9FFE5 /* XCTestCase.swift */; };
 		75926A1B234A483E00D9FFE5 /* CitySelectorViewControllerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75926A1A234A483E00D9FFE5 /* CitySelectorViewControllerTest.swift */; };
+		75AA2B4F234A66CA00852A5B /* GeocodeLocationServiceTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75AA2B4E234A66CA00852A5B /* GeocodeLocationServiceTest.swift */; };
+		75AA2B51234A6B7A00852A5B /* WeatherDataManagerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75AA2B50234A6B7A00852A5B /* WeatherDataManagerTest.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -77,6 +79,8 @@
 		75926A12234A36EF00D9FFE5 /* testData.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = testData.json; sourceTree = "<group>"; };
 		75926A16234A375700D9FFE5 /* XCTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XCTestCase.swift; sourceTree = "<group>"; };
 		75926A1A234A483E00D9FFE5 /* CitySelectorViewControllerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CitySelectorViewControllerTest.swift; sourceTree = "<group>"; };
+		75AA2B4E234A66CA00852A5B /* GeocodeLocationServiceTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeocodeLocationServiceTest.swift; sourceTree = "<group>"; };
+		75AA2B50234A6B7A00852A5B /* WeatherDataManagerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherDataManagerTest.swift; sourceTree = "<group>"; };
 		88254F6314832D9675E4AA5E /* Pods-SunnyTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SunnyTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-SunnyTests/Pods-SunnyTests.release.xcconfig"; sourceTree = "<group>"; };
 		89B6A0F4AFBC653192A3E192 /* Pods_Sunny.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Sunny.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		930CB18941753307350E9CA0 /* Pods-Sunny.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sunny.release.xcconfig"; path = "Pods/Target Support Files/Pods-Sunny/Pods-Sunny.release.xcconfig"; sourceTree = "<group>"; };
@@ -335,6 +339,8 @@
 			children = (
 				759269A323451D0C00D9FFE5 /* WeatherDetailsControllerTest.swift */,
 				75926A1A234A483E00D9FFE5 /* CitySelectorViewControllerTest.swift */,
+				75AA2B4E234A66CA00852A5B /* GeocodeLocationServiceTest.swift */,
+				75AA2B50234A6B7A00852A5B /* WeatherDataManagerTest.swift */,
 			);
 			path = "Test Cases";
 			sourceTree = "<group>";
@@ -546,6 +552,8 @@
 			files = (
 				75926A1B234A483E00D9FFE5 /* CitySelectorViewControllerTest.swift in Sources */,
 				75926A17234A375700D9FFE5 /* XCTestCase.swift in Sources */,
+				75AA2B51234A6B7A00852A5B /* WeatherDataManagerTest.swift in Sources */,
+				75AA2B4F234A66CA00852A5B /* GeocodeLocationServiceTest.swift in Sources */,
 				759269A423451D0C00D9FFE5 /* WeatherDetailsControllerTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
