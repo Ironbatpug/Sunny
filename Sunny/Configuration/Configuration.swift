@@ -17,6 +17,6 @@ struct API {
     
     static let APIHeader =  [
         "x-rapidapi-host": APIHost,
-        "x-rapidapi-key":APIKey
+        "x-rapidapi-key": APIKey
     ]
 }

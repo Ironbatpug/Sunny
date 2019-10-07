@@ -17,7 +17,7 @@ class CitySelectorViewController: UIViewController {
     
     //MARK: Variables and constants
     private var currentLocation: CLLocation?
-
+    
     var filteredLocation = [Location]()
     
     private lazy var geoService: GeocodeDecoder = {
@@ -36,7 +36,7 @@ class CitySelectorViewController: UIViewController {
     }()
     
     //MARK: Viewcontroller Functions
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         requestLocation()
@@ -47,11 +47,6 @@ class CitySelectorViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        if UserDefaults.loadLocations().isEmpty{
-            favoriteCitesButton.isHidden = true
-        } else {
-            favoriteCitesButton.isHidden = false
-        }
     }
     
     //MARK: permission ask
@@ -72,7 +67,7 @@ class CitySelectorViewController: UIViewController {
             if let dataError = dataError {
                 print(dataError)
             } else if let weather = weather, let location = location {
-               
+                
                 DispatchQueue.main.async {
                     guard let weatherDetailsViewController = self.storyboard?.instantiateViewController(withIdentifier: "WeatherDetailsViewController") as? WeatherDetailsViewController else { return }
                     weatherDetailsViewController.initData(forWeatherData: weather, witLocation: location)
@@ -122,9 +117,14 @@ class CitySelectorViewController: UIViewController {
     }
     
     @IBAction func viewFavoriteCitesBtnWasPressed(_ sender: Any) {
-        let locations = Array(UserDefaults.loadLocations())
-        print(locations)
-        if !locations.isEmpty {
+        if UserDefaults.loadLocations().isEmpty{
+            let alertVC = UIAlertController(title: "You do not have any favorites cities", message: "This is where you could see your favorites a cities. After you search for city you can add it to your favorites by clicking on the star.", preferredStyle: .actionSheet)
+            let cancelAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+            alertVC.addAction(cancelAction)
+            present(alertVC,animated: true, completion: nil)
+        } else {
+            let locations = Array(UserDefaults.loadLocations())
+            
             guard let favouriteLocationsViewController = self.storyboard?.instantiateViewController(withIdentifier: "FavouriteLocationsViewController") as? FavouriteLocationsViewController else { return }
             favouriteLocationsViewController.initData(forLocations: locations)
             self.present(favouriteLocationsViewController, animated: true, completion: nil)
@@ -151,8 +151,8 @@ extension CitySelectorViewController: CLLocationManagerDelegate {
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         if currentLocation == nil {
-            let alertVC = UIAlertController(title: "Can not determine your Location", message: "The app can not determine your location, try searching for a city.", preferredStyle: .actionSheet)
-            let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+            let alertVC = UIAlertController(title: "Can not determine your Location", message: "The app can not determine your location right now, try searching for a city.", preferredStyle: .actionSheet)
+            let cancelAction = UIAlertAction(title: "OK", style: .default, handler: nil)
             alertVC.addAction(cancelAction)
             present(alertVC,animated: true, completion: nil)
         }
