@@ -19,5 +19,5 @@ Can be reached from the city selector view by click on the star. If you do not h
 ## To install Sunny
 Prerequisite h installed legyen az xcode.
 1. Install the dependencies. From the project folder send the following command: ```pod install```
-2, Douple click  Sunny.xcworkspace.
-3,Due to the gitignore file the xcuserdata is not added, this couse an error on build. On Sunny the "Main interface" should set to "Main.storyboard" and the "Launch screen file" to "LaunchScreen.storyboard"
+2. Douple click  Sunny.xcworkspace.
+3. Due to the gitignore file the xcuserdata is not added, this couse an error on build. On Sunny the "Main interface" should set to "Main.storyboard" and the "Launch screen file" to "LaunchScreen.storyboard"
