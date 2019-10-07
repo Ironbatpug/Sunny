@@ -6,16 +6,17 @@ The API in use is Weatherbit, which also provides the pictures in the app.
 
 The launch screen has a 2 seconds loading time with a horizental bar.
 
-# City selector view:
+# City selector view
 On this page you can search for a city or use the current location button.
 
-# Weather details view:
+# Weather details view
 On this page you can see the weather for the next 16 days with the min, max temparature, sunset and sunrise time.
 With the star button on the top right you can set the city to a favorite. If you accidentaly tap on the star, just tap on the star again, and city will be removed from the favorite cities.
 
-# Favorite city view:
+# Favorite city view
 Can be reached from the city selector view by click on the star. If you do not have a favorite city you can not reach this page.
 
-## To install Sunny:
-The project uses a pod, so after git clone, the pod has to be installed. Navigate to the folder of Sunny in terminal and use ```pod install```
-After that start the Sunny.xcworkspace. Due to the gitignore file the xcuserdata is not added, this couse an error on first run. On Sunny the "Main interface" should setted to "Main.storyboard" and the "Launch screen file" to "LaunchScreen.storyboard"
+## To install Sunny
+Prerequisite h installed legyen az xcode.
+1. Install the dependencies. From the project folder send the following command: ```pod install```
+2, Douple click  Sunny.xcworkspace. Due to the gitignore file the xcuserdata is not added, this couse an error on first run. On Sunny the "Main interface" should set to "Main.storyboard" and the "Launch screen file" to "LaunchScreen.storyboard"
