@@ -49,11 +49,15 @@ final class WeatherDataManager : WeatherDataManagerProtocol {
                     completion(nil, nil, .failedRequest)
                 } else if let data = data, let response = response as? HTTPURLResponse {
                     if response.statusCode == 200 {
-                        let json = JSON(data: data)
+                        do {
+                        let json = try JSON(data: data)
                         let weatherData = self.getWeatherDataArrayFromJSON(json: json)
                         let city = json["city_name"].stringValue
                         let location = Location(city: city, latitude: latitude, longitude: longitude)
                         completion(location, weatherData, nil)
+                        } catch {
+                            completion(nil, nil, .invalidResponse)
+                        }
                     } else {
                         completion(nil, nil, .failedRequest)
                     }

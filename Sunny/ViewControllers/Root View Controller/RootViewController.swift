@@ -27,7 +27,10 @@ class RootViewController: UIViewController {
     
     @objc private func showCitySelector() {
         guard let citySelectorViewController = self.storyboard?.instantiateViewController(withIdentifier: "CitySelectorViewController") as? CitySelectorViewController else { return }
-        self.present(citySelectorViewController, animated: true, completion: nil)
+        self.modalPresentationStyle = .none
+        citySelectorViewController.modalPresentationStyle = .fullScreen
+        self.present(citySelectorViewController, animated:true, completion:nil)
+
     }
 
 
